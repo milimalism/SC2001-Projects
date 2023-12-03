@@ -5,17 +5,17 @@ import pandas as pd
 
 S = [16,17,18, 19]#[20,5,10,15,,22,24,26,28,30,35]
 SIZE1 = [2,3,4,5]
-SIZE = [300000, 100000, 600000, 1000000]
-NO_OF_ARRAYS =  1
+SIZE = [1000,10000,50000,100000,200000,300000,400000,500000,600000,700000,800000,900000,1000000,2500000,5000000,7500000,10000000]
+NO_OF_ARRAYS =  50
 X = 10000000
 
 #lists i used for testing, can ignore
 LIST1 = [4444, 1232, 3000, 2198, 5223, 9000,1248,871,9190, 1430, 4422]
-LIST = [567,3,22,6,78,1,33,567,9,10,22, 2, 4 ,3, 667767]
+LIST2 = [567,3,22,6,78,1,33,567,9,10,22, 2, 4 ,3, 667767]
 LIST0 = [9,1,8888888,0]
 comparisons = 0
 
-
+#generates a list of 'NO-OF_ARRAYS' lists each having m values which lie in the range from 1 to X
 def arrays(m):
     inputList = []
     for i in range (NO_OF_ARRAYS):
@@ -25,6 +25,7 @@ def arrays(m):
         #print("\n:", i+1, " : " , c, "\n")
     
     return inputList
+
 
 def insertionsort(list):
     global comparisons
@@ -79,7 +80,7 @@ def mergesort(list,S):
     else:
         return insertionsort(list)
         
-            
+           
     return list
 
 #just a method to check if the list is sorted, used only for self-checking
@@ -87,7 +88,8 @@ def sorted_check(list):
     for i in range (len(list)-1):
         if(list[i]>list[i+1]):
             print("ERROR YOURE FAILING")
-        
+
+
 def main():
 
     global comparisons
@@ -96,13 +98,15 @@ def main():
     #generating list of lists
     #unchanged = arrays()
     
-    #first run of method to prevent discrepancies in timing due ot caching etc 
+    #first run of method to prevent discrepancies in timing due to caching etc 
     initial = t.perf_counter_ns()
     mergesort(LIST1, 5)
     final = t.perf_counter_ns() 
     print("time = " , final-initial, " ", comparisons)
 
     #running mergesort for each list in inputList
+    #when we want the generated arrays to have different numbers of elements, we use the SIZE list which stores the different sizes of the arrays.
+    #so for every size, we generate a list of lists (each list having 'size' number of elements) and run the code and collect the relevant data.
     for size in SIZE:
         for s in S:  
             inputList = arrays(size)
