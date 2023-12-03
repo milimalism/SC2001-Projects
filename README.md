@@ -2,7 +2,7 @@
 
 We had 3 projects that we had to present during our labs: 
 
-Project 1 : Analysing a merge-intesertion hybrid sorting algorithm to find the optimal length of input array at which we must shift from meger to insertion sort.
+Project 1 : Analysing a merge-insertion hybrid sorting algorithm to find the optimal length of input array at which we must shift from merge to insertion sort.
 
 Project 2 : Analysing two forms of dijkstra's algorithm: 
 
